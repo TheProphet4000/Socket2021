@@ -6,5 +6,5 @@ public class ChatClientAflevering {
             "Kommandoen SUBMITNAME sende fra ... til ... og det betyder.. "
      */
 
-
+    
 }
