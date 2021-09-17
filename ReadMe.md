@@ -1,4 +1,6 @@
-- Serveren lytter på port 8000
-- Serveren skriver hvornår den blev startet. Hvor den så vil lave en ny tråd (med en I/O stream), for hver client der opretter forbindelse, med serveren.
-- Derefter, vil serveren så modtage modtage en double, der bruges til udregningen af arealet, af en cirkel. Denne udregning, vil så blive sendt tilbage til client, i form af et TextArea.
-- For hver tråd, vil den så starte med at lytte, med .start()
+-Serveren opretter en pool på 500 pladser, hvor den derefter lytter på port 59002.
+-Når serveren opretter pool, vil den samtidig acceptere alle requests på denne port.
+-Hvis serveren finder en forbindelse, vil den spørger om et unikt brugernavn. Hvis navnet ikke er unikt,     vil den spørge igen.
+-Herefter, vil serveren skrive til alle clienter, at det nye brugernavn er tilsluttet.4
+  Serveren vil så videresende den besked, som den enklete client har sent til serveren, med brugernavnet     foran.
+-Hvis clientens forbindelse bliver afbrydt, vil serveren skrive til alle, at clienten ved dette brugernavn,   har forladt serveren. Hvor serveren så vil lukke den socket.
