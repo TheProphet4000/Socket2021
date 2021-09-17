@@ -1,5 +1,5 @@
-/*
-programmer en command line chatclient, som kan bruges sammen med serveren.
+package lmu;/*
+Opgave: programmer en command line chatclient, som kan bruges sammen med serveren.
  */
 
 import java.io.IOException;
@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class ChatClientAflevering {
 
-    public static int port = 59002;
     private static String ipAdress = "";
 
     public static void main(String[] args) throws IOException {
@@ -28,13 +27,14 @@ public class ChatClientAflevering {
     }
 
     static void clientSetup() throws IOException {
-        var soc = new Socket(ipAdress,port);
+        var soc = new Socket(ipAdress,59002); //Laver en custom variabel med navn soc"Socket" med en string, og port
 
-        Scanner inp = new Scanner(soc.getInputStream());
+        Scanner inp = new Scanner(soc.getInputStream()); //standart I/O variabler
         PrintWriter out = new PrintWriter(soc.getOutputStream(),true);
 
         while (inp.hasNextLine()){
             var line = inp.nextLine();
+            //laver en string variable, som programmet bruger til at checke server status, og handler ud fra det.
 
             if (line.startsWith("SUBMITNAME")) {
                 System.out.println("Skriv dit navn"); String mitNavn = inp.nextLine();
@@ -42,7 +42,7 @@ public class ChatClientAflevering {
                 out.println(mitNavn);
 
             } else if (line.startsWith("NAMEACCEPTED")) {
-                System.out.println("Chatter - " + line.substring(13));
+                System.out.println("Snakker på : " + line.substring(13));
 
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Skriv hvad du har på hjertet"); String besked = scanner.nextLine();
